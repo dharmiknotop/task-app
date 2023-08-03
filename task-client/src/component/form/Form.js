@@ -114,7 +114,7 @@ const Form = () => {
 
         {!requestUploadData.loading && (
           <Fragment>
-            <h1 className="title p-2">Add a task</h1>
+            <h1 className="heading p-2">Add a task</h1>
 
             <div className="container">
               <div className="row">

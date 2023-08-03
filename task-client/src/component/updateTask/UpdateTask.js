@@ -136,7 +136,7 @@ const UpdateTask = (props) => {
 
         {!requestUploadData.loading && (
           <Fragment>
-            <h1 className="title p-2">Update a task</h1>
+            <h1 className="heading p-2">Update a task</h1>
 
             <div className="container">
               <div className="row">
