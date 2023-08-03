@@ -12,10 +12,7 @@ require('dotenv').config({ path: './config/config.env' });
 app.use(
   cors({
     credentials: true,
-    origin: [
-      'http://localhost:3000',
-      'https://bright-mandazi-0d8def.netlify.app/',
-    ],
+    origin: '*',
   })
 );
 app.use(bodyParser.json());
