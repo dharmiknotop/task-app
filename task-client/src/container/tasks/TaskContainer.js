@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 import './css/taskContainer.css';
 import Task from '../../component/task/Task';
 
+import configKey from '../../config/Keys';
+
 const TaskContainer = () => {
   const [requestUploadData, setrequestGetData] = useState({
     loading: false,
@@ -22,7 +24,9 @@ const TaskContainer = () => {
         error: '',
       });
 
-      const res = await axios.get(`http://localhost:8081/api/read`, {
+      console.log(configKey);
+
+      const res = await axios.get(`${configKey.SERVER_URL}/api/read`, {
         withCredentials: true,
         'Content-Type': 'application/json',
       });
@@ -58,7 +62,7 @@ const TaskContainer = () => {
         )}
         {!requestUploadData.loading && (
           <Fragment>
-            {tasks.length > 0 && (
+            {tasks?.length > 0 && (
               <div className="titleContainer">
                 <h1 className="title p-2">All the tasks</h1>
                 <NavLink
@@ -69,7 +73,7 @@ const TaskContainer = () => {
                 </NavLink>
               </div>
             )}
-            {tasks.length === 0 && (
+            {tasks?.length === 0 && (
               <div className="noTaskContainer">
                 You have currently no tasks
                 <NavLink

@@ -1,6 +1,8 @@
 import './css/deleteTask.css';
 import axios from 'axios';
 
+import configKey from '../../config/Keys';
+
 const DeleteTask = (props) => {
   const getTasks = props.getTasks;
   const id = props.id;
@@ -8,7 +10,7 @@ const DeleteTask = (props) => {
   const deleteTask = async () => {
     try {
       await axios.post(
-        `http://localhost:8081/api/delete`,
+        `${configKey.SERVER_URL}api/delete`,
         { id },
         {
           withCredentials: true,

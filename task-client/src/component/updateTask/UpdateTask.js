@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import configKey from '../../config/Keys';
+
 import inputValidation from '../validation//inputValidation';
 
 const UpdateTask = (props) => {
@@ -77,7 +79,7 @@ const UpdateTask = (props) => {
       });
 
       await axios.post(
-        `http://localhost:8081/api/update`,
+        `${configKey.SERVER_URL}/api/update`,
         { ...formData, id },
         {
           withCredentials: true,
@@ -105,7 +107,7 @@ const UpdateTask = (props) => {
   const getTask = async () => {
     try {
       const res = await axios.post(
-        `http://localhost:8081/api/readOne`,
+        `${configKey.SERVER_URL}/api/readOne`,
         { id },
         {
           withCredentials: true,

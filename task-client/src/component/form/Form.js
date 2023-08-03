@@ -3,6 +3,7 @@ import React, { Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './css/form.css';
+import configKey from '../../config/Keys';
 
 import inputValidation from '../validation//inputValidation';
 
@@ -78,7 +79,7 @@ const Form = () => {
       });
 
       await axios.post(
-        `http://localhost:8081/api/create`,
+        `${configKey.SERVER_URL}/api/create`,
         { ...formData },
         {
           withCredentials: true,
