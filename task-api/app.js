@@ -9,7 +9,15 @@ require('dotenv').config({ path: './config/config.env' });
 
 //applying middlewares for incoming request
 
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+app.use(
+  cors({
+    credentials: true,
+    origin: [
+      'http://localhost:3000',
+      'https://bright-mandazi-0d8def.netlify.app/',
+    ],
+  })
+);
 app.use(bodyParser.json());
 
 // Route Imports
