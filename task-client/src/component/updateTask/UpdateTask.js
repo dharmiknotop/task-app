@@ -30,7 +30,6 @@ const UpdateTask = (props) => {
     if (validateForm()) {
       return;
     }
-    console.log('words');
     await uploadDetails();
   };
 
@@ -77,8 +76,6 @@ const UpdateTask = (props) => {
         error: '',
       });
 
-      console.log({ ...formData });
-
       await axios.post(
         `http://localhost:8081/api/update`,
         { ...formData, id },
@@ -115,8 +112,6 @@ const UpdateTask = (props) => {
           'Content-Type': 'application/json',
         }
       );
-
-      console.log(res.data.data);
 
       setFormData({
         ...res.data.data.tasks,

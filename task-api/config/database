@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const connectDatabase = () => {
-  const DB = process.env.DATABASE
+  const DB = process.env.DATABASE;
 
   mongoose
     .connect(
@@ -8,10 +8,10 @@ const connectDatabase = () => {
       { useNewUrlParser: true },
       { useCreateIndex: true },
       { useUnifiedTopology: true },
-      { useFindAndModify: false },
+      { useFindAndModify: false }
     )
     .then(() => {
-      console.log('excellent')
-    })
-}
-module.exports = connectDatabase
+      console.log('Database connected succesfully');
+    });
+};
+module.exports = connectDatabase;
