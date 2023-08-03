@@ -1,0 +1,23 @@
+{
+  "name": "task-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dharmiknotop/task-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dharmiknotop/task-app/issues"
+  },
+  "homepage": "https://github.com/dharmiknotop/task-app#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.4.1"
+  }
+}
