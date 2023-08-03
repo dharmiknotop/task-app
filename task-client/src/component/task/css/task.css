@@ -1,7 +1,8 @@
-.title {
-  font-size: 18px;
+.taskTitle {
+  font-size: 22px;
   font-weight: 600;
-  margin-bottom: 5px;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
 }
 
 .status {
@@ -12,7 +13,29 @@
 }
 
 .description {
+  height: 100%;
+
   font-size: 18px;
   font-weight: 400;
   margin-bottom: 0px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.statusCompleted {
+  color: #28a745;
+}
+
+.statusRemaining {
+  color: #ffc107;
+}
+
+.btnContainer {
+  height: 100%;
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }

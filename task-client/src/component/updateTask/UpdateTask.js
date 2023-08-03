@@ -1,11 +1,12 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import inputValidation from '../validation//inputValidation';
 
 const UpdateTask = (props) => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [requestUploadData, setrequestUploadData] = useState({
     loading: false,
@@ -45,7 +46,7 @@ const UpdateTask = (props) => {
     tempError.title = inputValidation.isInputEmpty(formData.title);
     if (tempError.title !== '') {
       hasError = true;
-      tempError.title = 'Enter Title for the task';
+      tempError.title = 'Enter title for the task';
     }
 
     tempError.description = inputValidation.isInputEmpty(formData.description);
@@ -86,6 +87,8 @@ const UpdateTask = (props) => {
           'Content-Type': 'application/json',
         }
       );
+
+      navigate('/');
 
       setrequestUploadData({
         loading: false,
@@ -130,67 +133,93 @@ const UpdateTask = (props) => {
   return (
     <div className="containerOuter">
       <div className="containerInner">
-        <h1 className="title p-2">Update a task</h1>
-
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-md-6 col-lg-6 p-2">
-              <input
-                className="form-control"
-                type="text"
-                value={formData.title}
-                placeholder="Enter your task"
-                onChange={(e) => {
-                  setFormData({
-                    ...formData,
-                    title: e.target.value,
-                  });
-                }}
-              />
-            </div>
-
-            <div className="col-12 col-md-6 col-lg-6 p-2">
-              <select
-                className="form-select"
-                onChange={(e) => {
-                  setFormData({
-                    ...formData,
-                    status: e.target.value,
-                  });
-                }}
-              >
-                <option value="remaining">Remaining</option>
-                <option value="completed">Completed</option>
-              </select>
-            </div>
-            <div className="col-12 p-2">
-              <input
-                className="form-control"
-                type="text"
-                value={formData.description}
-                placeholder="Enter your description"
-                onChange={(e) => {
-                  setFormData({
-                    ...formData,
-                    description: e.target.value,
-                  });
-                }}
-              />
-            </div>
-
-            <div className="col-12 p-2">
-              <button
-                type="button"
-                className="btn btn-primary w-100"
-                onClick={() => {
-                  saveDetail();
-                }}
-              >
-                submit
-              </button>
-            </div>
+        {requestUploadData.loading && (
+          <div className="text-center py-4">
+            <div className="spinner-border text-primary" role="status" />
           </div>
-        </div>
+        )}
+
+        {!requestUploadData.loading && (
+          <Fragment>
+            <h1 className="title p-2">Update a task</h1>
+
+            <div className="container">
+              <div className="row">
+                <div className="col-12 col-md-6 col-lg-6 p-2 mt-3">
+                  <input
+                    className="form-control"
+                    type="text"
+                    value={formData.title}
+                    placeholder="Enter your task"
+                    onChange={(e) => {
+                      setFormData({
+                        ...formData,
+                        title: e.target.value,
+                      });
+                    }}
+                  />
+                  {formDataError.title && (
+                    <span className="text-danger">{formDataError.title}</span>
+                  )}
+                </div>
+
+                <div className="col-12 col-md-6 col-lg-6 p-2 mt-3">
+                  <select
+                    className="form-select"
+                    onChange={(e) => {
+                      setFormData({
+                        ...formData,
+                        status: e.target.value,
+                      });
+                    }}
+                  >
+                    <option value="" selected>
+                      Select a status
+                    </option>{' '}
+                    <option value="Remaining">Remaining</option>
+                    <option value="Completed">Completed</option>
+                  </select>
+
+                  {formDataError.status && (
+                    <span className="text-danger">{formDataError.status}</span>
+                  )}
+                </div>
+                <div className="col-12 p-2 mt-3">
+                  <input
+                    className="form-control"
+                    type="text"
+                    value={formData.description}
+                    placeholder="Enter your description"
+                    onChange={(e) => {
+                      setFormData({
+                        ...formData,
+                        description: e.target.value,
+                      });
+                    }}
+                  />
+
+                  {formDataError.description && (
+                    <span className="text-danger">
+                      {formDataError.description}
+                    </span>
+                  )}
+                </div>
+
+                <div className="col-12 p-2 mt-3">
+                  <button
+                    type="button"
+                    className="btn btn-primary w-100"
+                    onClick={() => {
+                      saveDetail();
+                    }}
+                  >
+                    submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Fragment>
+        )}
       </div>
     </div>
   );

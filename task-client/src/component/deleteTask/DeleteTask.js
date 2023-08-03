@@ -1,4 +1,3 @@
-import { MdDeleteOutline } from 'react-icons/md';
 import './css/deleteTask.css';
 import axios from 'axios';
 
@@ -24,12 +23,15 @@ const DeleteTask = (props) => {
   };
 
   return (
-    <MdDeleteOutline
-      color="red"
+    <button
+      type="button"
+      className="btn btn-sm btn-danger "
       onClick={() => {
         deleteTask();
       }}
-    />
+    >
+      Delete
+    </button>
   );
 };
 
