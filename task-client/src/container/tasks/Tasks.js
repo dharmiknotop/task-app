@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
 import './css/tasks.css';
 import Task from '../../component/task/Task';
@@ -49,11 +49,21 @@ const Tasks = () => {
 
   return (
     <div className="containerOuter">
-      <div className="containerInner">
-        <h1 className="title">All the tasks</h1>
-        {tasks?.map((item) => {
-          return <Task item={item} />;
-        })}
+      <div className="taskContainerInner">
+        <h1 className="title p-2">All the tasks</h1>
+
+        {requestUploadData.loading && (
+          <div className="text-center py-4">
+            <div className="spinner-border text-primary" role="status" />
+          </div>
+        )}
+        {!requestUploadData.loading && (
+          <Fragment>
+            {tasks?.map((item) => {
+              return <Task item={item} getTasks={getTasks} />;
+            })}
+          </Fragment>
+        )}
       </div>
     </div>
   );

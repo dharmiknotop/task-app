@@ -1,9 +1,12 @@
 import React from 'react';
 import './css/task.css';
+import DeleteTask from '../deleteTask/DeleteTask';
+import UpdateTask from '../updateTask/UpdateTask';
 
-import { MdDeleteOutline } from 'react-icons/md';
 const Task = (props) => {
-  const { title, description, status } = props.item;
+  const { _id, title, description, status } = props.item;
+  const getTasks = props.getTasks;
+
   return (
     <div className="container">
       <div className="row">
@@ -15,7 +18,8 @@ const Task = (props) => {
           <h4 className="description">{description}</h4>
         </div>
         <div className="col-12 col-md-6 col-lg-3 p-2">
-          <MdDeleteOutline color="red" />
+          <UpdateTask />
+          <DeleteTask getTasks={getTasks} id={_id} />
         </div>
       </div>
     </div>
