@@ -5,7 +5,7 @@ const cors = require('cors');
 
 //importing .env variables
 
-require('dotenv').config({ path: 'task-api/config/config.env' });
+require('dotenv').config({ path: './config/config.env' });
 
 //applying middlewares for incoming request
 
