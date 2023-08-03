@@ -1,9 +1,17 @@
-import './css/form.css';
+import axios from 'axios';
 import React, { useState } from 'react';
+
+import './css/form.css';
 
 import inputValidation from '../validation//inputValidation';
 
 const Form = () => {
+  const [requestUploadData, setrequestUploadData] = useState({
+    loading: false,
+    success: '',
+    error: '',
+  });
+
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -14,12 +22,6 @@ const Form = () => {
     title: '',
     description: '',
     status: '',
-  });
-
-  const [requestUploadData, setrequestUploadData] = useState({
-    loading: false,
-    success: '',
-    error: '',
   });
 
   const validateForm = () => {
@@ -61,7 +63,7 @@ const Form = () => {
     if (validateForm()) {
       return;
     }
-
+    console.log('words');
     await uploadDetails();
   };
 
@@ -73,7 +75,17 @@ const Form = () => {
         error: '',
       });
 
-      console.log(formData);
+      console.log({ ...formData });
+
+      await axios.post(
+        `http://localhost:8081/api/create`,
+        { ...formData },
+        {
+          withCredentials: true,
+          'Content-Type': 'application/json',
+        }
+      );
+      console.log('hisdfew');
 
       setrequestUploadData({
         loading: false,
@@ -141,15 +153,17 @@ const Form = () => {
               />
             </div>
 
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={() => {
-                saveDetail();
-              }}
-            >
-              submit
-            </button>
+            <div className="col-12 p-2">
+              <button
+                type="button"
+                className="btn btn-primary w-100"
+                onClick={() => {
+                  saveDetail();
+                }}
+              >
+                submit
+              </button>
+            </div>
           </div>
         </div>
       </div>
