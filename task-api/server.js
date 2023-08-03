@@ -3,6 +3,8 @@ const connectDatabase = require('./config/database');
 
 connectDatabase();
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is working on http://localhost:${process.env.PORT}`);
+const PORT = process.env.PORT || 8081;
+
+app.listen(PORT, () => {
+  console.log(`Server is working on http://localhost:${PORT}`);
 });
