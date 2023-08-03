@@ -13,7 +13,6 @@ const DeleteTask = (props) => {
         `${configKey.SERVER_URL}/api/delete`,
         { id },
         {
-          withCredentials: true,
           'Content-Type': 'application/json',
         }
       );

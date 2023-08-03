@@ -18,6 +18,7 @@ app.use(
       'http://localhost:3000',
       'https://bright-mandazi-0d8def.netlify.app/',
       'bright-mandazi-0d8def.netlify.app/',
+      'bright-mandazi-0d8def.netlify.app',
     ],
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
   })
