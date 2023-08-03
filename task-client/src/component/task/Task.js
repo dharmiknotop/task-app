@@ -1,7 +1,9 @@
 import React from 'react';
 import './css/task.css';
 import DeleteTask from '../deleteTask/DeleteTask';
-import UpdateTask from '../updateTask/UpdateTask';
+
+import { NavLink } from 'react-router-dom';
+import { PiDotsThreeVerticalBold } from 'react-icons/pi';
 
 const Task = (props) => {
   const { _id, title, description, status } = props.item;
@@ -18,7 +20,9 @@ const Task = (props) => {
           <h4 className="description">{description}</h4>
         </div>
         <div className="col-12 col-md-6 col-lg-3 p-2">
-          <UpdateTask />
+          <NavLink to={`http://localhost:3000/updateTask/${_id}`}>
+            <PiDotsThreeVerticalBold color="black" />
+          </NavLink>
           <DeleteTask getTasks={getTasks} id={_id} />
         </div>
       </div>

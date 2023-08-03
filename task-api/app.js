@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 const create = require('./routes/createRoute');
 const deleteTask = require('./routes/deleteRoute');
 const read = require('./routes/readRoute');
-const upadate = require('./routes/upadateRoute');
+const upadate = require('./routes/updateRoute');
 
 app.use('/api/', read);
 app.use('/api/', create);
