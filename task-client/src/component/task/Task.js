@@ -29,7 +29,7 @@ const Task = (props) => {
           <div className="btnContainer">
             <NavLink
               className="btn btn-sm btn-primary me-3"
-              to={`http://localhost:3000/updateTask/${_id}`}
+              to={`/updateTask/${_id}`}
             >
               Update
             </NavLink>

@@ -65,10 +65,7 @@ const TaskContainer = () => {
             {tasks?.length > 0 && (
               <div className="titleContainer">
                 <h1 className="title p-2">All the tasks</h1>
-                <NavLink
-                  to={`http://localhost:3000/addTask`}
-                  className="btn btn-primary addBtn"
-                >
+                <NavLink to={`/addTask`} className="btn btn-primary addBtn">
                   Add +
                 </NavLink>
               </div>
@@ -77,7 +74,7 @@ const TaskContainer = () => {
               <div className="noTaskContainer">
                 You have currently no tasks
                 <NavLink
-                  to={`http://localhost:3000/addTask`}
+                  to={`/addTask`}
                   className="btn btn-primary addBtn ms-5"
                 >
                   Add +

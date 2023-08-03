@@ -10,7 +10,7 @@ const DeleteTask = (props) => {
   const deleteTask = async () => {
     try {
       await axios.post(
-        `${configKey.SERVER_URL}api/delete`,
+        `${configKey.SERVER_URL}/api/delete`,
         { id },
         {
           withCredentials: true,

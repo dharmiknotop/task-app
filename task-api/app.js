@@ -9,6 +9,8 @@ require('dotenv').config({ path: './config/config.env' });
 
 //applying middlewares for incoming request
 
+app.use(bodyParser.json());
+
 app.use(
   cors({
     credentials: true,
@@ -17,9 +19,9 @@ app.use(
       'https://bright-mandazi-0d8def.netlify.app/',
       'bright-mandazi-0d8def.netlify.app/',
     ],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   })
 );
-app.use(bodyParser.json());
 
 app.all('/api/*', function (req, res, next) {
   const origin = req.header('origin');
