@@ -1,0 +1,19 @@
+.containerOuter {
+  width: 100%;
+}
+.containerInner {
+  width: 600px;
+  height: 100vh;
+
+  margin: 0 auto;
+  max-width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+}
