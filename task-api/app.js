@@ -19,7 +19,7 @@ app.use(
       'https://bright-mandazi-0d8def.netlify.app/',
       'bright-mandazi-0d8def.netlify.app/',
     ],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
   })
 );
 
