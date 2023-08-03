@@ -12,10 +12,31 @@ require('dotenv').config({ path: './config/config.env' });
 app.use(
   cors({
     credentials: true,
-    origin: '*',
+    origin: [
+      'http://localhost:3000',
+      'https://bright-mandazi-0d8def.netlify.app/',
+      'bright-mandazi-0d8def.netlify.app/',
+    ],
   })
 );
 app.use(bodyParser.json());
+
+app.all('/api/*', function (req, res, next) {
+  const origin = req.header('origin');
+  res.header('Access-Control-Allow-Origin', origin);
+  next();
+});
+
+app.use(function (req, res, next) {
+  // Enabling CORS
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization'
+  );
+  next();
+});
 
 // Route Imports
 const create = require('./routes/createRoute');
