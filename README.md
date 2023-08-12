@@ -1,5 +1,5 @@
 
-# Portfolio website
+# Task-app
 
 It is a basic todo application. I was an internship task to make a simple todo app with basic UI.
 
